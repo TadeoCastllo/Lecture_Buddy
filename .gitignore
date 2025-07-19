@@ -1,0 +1,47 @@
+# ---- Archivos de entorno ----
+.env
+.env.*
+
+# ---- Archivos de audio ----
+*.wav
+*.mp3
+
+# ---- Archivos de texto (excepto requirements.txt) ----
+*.txt
+!requirements.txt
+
+# ---- Entornos virtuales ----
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ---- Archivos de logs ----
+*.log
+
+# ---- Archivos de pruebas / caché ----
+.cache/
+*.pytest_cache/
+coverage/
+*.cover
+*.coverage
+*.egg-info/
+
+# ---- IDEs / editores ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# ---- Archivos de compilación ----
+build/
+dist/
+*.egg
+*.whl
+mi_entorno/
+respaldo2.cs
+bin/
+obj/
+Debug/
+net9.0/
