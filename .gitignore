@@ -9,7 +9,8 @@
 # ---- Archivos de texto (excepto requirements.txt) ----
 *.txt
 !requirements.txt
-
+respaldo2.cs
+respaldo.cs
 # ---- Entornos virtuales ----
 venv/
 env/
