@@ -10,14 +10,14 @@ def clonar_voz_speechify(name: str, gender: str, consent: dict,
     data  = {
         "name": name,
         "gender": gender,
-        # el backend espera consent como *texto* JSON
+        # se espera consent como *texto* JSON
         "consent": json.dumps(consent),
     }
 
     resp = requests.post(url, headers=headers, data=data, files=files)
     files["sample"].close()
 
-    # Speechify usa 200 *o* 201 para éxito –‑ manejamos ambos
+    
     if resp.status_code in (200, 201):
-        return resp.json()      # ← simplemente devolvemos el JSON
+        return resp.json()     
     raise RuntimeError(f"Speechify error {resp.status_code}: {resp.text}")
