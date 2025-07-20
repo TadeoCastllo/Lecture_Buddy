@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 class Interprete
 {
     public static readonly string voiceId = "1MxuWc12WPRxDkgfT3kj"; // ID de la voz a utilizar en Eleven Labs
-    private static readonly string voiceIdSpeechify = "charlotte"; // ID de la voz a utilizar en Speechify (puedes cambiarlo según tus preferencias)
+    private static readonly string voiceIdSpeechify = "alejandro"; // ID de la voz a utilizar en Speechify (puedes cambiarlo según tus preferencias)
 
     // Método para convertir voz a texto usando OpenAI Whisper
     public async Task<string> ConvertirVozATexto(string rutaArchivo)
@@ -33,7 +33,7 @@ class Interprete
             return $"Error: {result}";
         }
 
-        return result; // Devuelve el JSON crudo, sin deserializar
+        return result;
     }
 
     // Método para convertir texto a voz usando Eleven Labs
@@ -126,9 +126,9 @@ class Interprete
             audio_format = "mp3",
             language = "es-ES",
             model = "simba-multilingual",
-            pitch = (string)null,
-            rate = (string)null,
-            emotion = (string)null
+            pitch = "+20%",
+            rate = "",
+            emotion = "direct"
         };
         var jsonPayload = System.Text.Json.JsonSerializer.Serialize(payload);
         var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
@@ -177,16 +177,16 @@ class Interprete
 
             await interprete.AnalizarEmociones(textoTranscrito);
 
-            //            string salidaAudio = "salida.mp3";
+            string salidaAudio = "salida.mp3";
 
             // 🎙 OPCIÓN 1: Usar Speechify como motor TTS
-            //            bool exito = await interprete.ConvertirTextoAVozSpeechify(textoTranscrito, salidaAudio);
+            bool exito = await interprete.ConvertirTextoAVozSpeechify(textoTranscrito, salidaAudio);
 
             // 🎙 OPCIÓN 2: Usar ElevenLabs como motor TTS
             //bool exito2 = await interprete.ConvertirTextoAVoz(textoTranscrito, salidaAudio);
 
-            //            if (exito)
-            //              interprete.ReproducirAudio(salidaAudio);
+            if (exito)
+                interprete.ReproducirAudio(salidaAudio);
         }
     }
 }
